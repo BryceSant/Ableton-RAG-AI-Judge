@@ -1,11 +1,13 @@
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import ChatOllama #To avoid using my tokens
+from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from dotenv import load_dotenv
 from os import getenv
 load_dotenv()
 
 
-MODEL = "meta-llama/llama-3.3-70b-instruct" #model that will be used
+#MODEL = "meta-llama/llama-3.3-70b-instruct" #model that will be used
+MODEL = "qwen2.5:14b-instruct" #model that will be used FOR TESTING PURPOSES
 TEMPERATURE = 0.0 #model's temperature
 PROMPT = """ 
 You are an evaluation model.
@@ -61,31 +63,63 @@ If an answer describes generic audio concepts without Ableton context → Depth 
 Instructions:
 
 You will be given:
-
-The original question
-
-The model’s answer
+- The original question
+- The model’s answer
 
 Evaluate the answer strictly according to the rules above.
 Be harsh.
 Do not rewrite or fix the answer.
 Do not include chain-of-thought.
-"""
+""" 
 
-model = ChatOpenAI(    
-    api_key=getenv("OPENROUTER_API_KEY"),
-    base_url="https://openrouter.ai/api/v1",
+QUESTION = "How do I make my entire song slow down or speed up?"
+
+# model = ChatOpenAI(    
+#     api_key=getenv("OPENROUTER_API_KEY"),
+#     base_url="https://openrouter.ai/api/v1",
+#     model = MODEL,
+#     temperature = TEMPERATURE,
+# )
+
+#Model that will be used FOR TESTING PURPOSES
+model = ChatOllama(    
     model = MODEL,
     temperature = TEMPERATURE,
-    think=False,
 )
 
+while True:
+    print("\n")
+    ai_response = input("Please write the AI's response, or q to quit: \n")
+    print("\n")
+    
+    if ai_response.lower() == 'q':
+        print("Exiting the loop.")
+        break
+
+    else:
+        prompt = ChatPromptTemplate.from_template(f"""
+            {PROMPT}
+            Question: {QUESTION}
+            Answer: {{answer}}
+            """
+        )
+
+        chain = prompt | model
+
+        response = chain.invoke({
+            "answer": ai_response
+        })
+
+        print(response.content)
 
 
-prompt = ChatPromptTemplate.from_template(f"""
-{PROMPT}
-Question: {{input}}
-"""
-)
 
-chain = prompt | model
+
+
+
+
+
+
+
+
+
