@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama #To avoid using my tokens
-from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 from os import getenv
 load_dotenv()
