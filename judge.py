@@ -6,8 +6,8 @@ from os import getenv
 load_dotenv()
 
 
-#MODEL = "meta-llama/llama-3.3-70b-instruct" #model that will be used
-MODEL = "qwen2.5:14b-instruct" #model that will be used FOR TESTING PURPOSES
+MODEL = "openai/gpt-5" #model that will be used
+#MODEL = "qwen2.5:14b-instruct" #model that will be used FOR TESTING PURPOSES
 TEMPERATURE = 0.0 #model's temperature
 PROMPT = """ 
 You are an evaluation model.
@@ -74,18 +74,18 @@ Do not include chain-of-thought.
 
 QUESTION = "How do I make my entire song slow down or speed up?"
 
-# model = ChatOpenAI(    
-#     api_key=getenv("OPENROUTER_API_KEY"),
-#     base_url="https://openrouter.ai/api/v1",
-#     model = MODEL,
-#     temperature = TEMPERATURE,
-# )
-
-#Model that will be used FOR TESTING PURPOSES
-model = ChatOllama(    
+model = ChatOpenAI(    
+    api_key=getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
     model = MODEL,
     temperature = TEMPERATURE,
 )
+
+#Model that will be used FOR TESTING PURPOSES
+# model = ChatOllama(    
+#     model = MODEL,
+#     temperature = TEMPERATURE,
+# )
 
 while True:
     print("\n")
@@ -109,6 +109,8 @@ while True:
         response = chain.invoke({
             "answer": ai_response
         })
+
+        print("Judge's verdict: \n")
 
         print(response.content)
 
