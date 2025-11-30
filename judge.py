@@ -106,7 +106,7 @@ while True:
 
         chain = prompt | model
 
-        response = chain.invoke({
+        response = chain.stream({
             "answer": ai_response
         })
 
