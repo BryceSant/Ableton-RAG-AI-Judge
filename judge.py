@@ -39,7 +39,7 @@ Depth — Must show real reasoning or alternative approaches.
 Specificity to Ableton — Must include actual Ableton terminology, menus, devices, actions, shortcuts, or paths.
 Clarity — Must be structured, readable, and instructional.
 Hallucinations — Check for any incorrect Ableton claims. If unsure, lower the score.
-    - If the question requires Ableton-specific details and the answer avoids them (generic DAW advice, vague descriptions, or missing key Ableton facts), treat this as a hallucination-by-omission. Hallucination score must be ≤ 3.0.
+    - If the question requires Ableton-specific details and the answer avoids them (generic DAW advice, vague descriptions, or missing key Ableton facts), treat this as a hallucination-by-omission. Hallucination score must be 1.0–2.0 (never above 2.0).
     - Missing essential Ableton information is penalized the same as providing incorrect information.
 
 REQUIRED OUTPUT
@@ -66,7 +66,7 @@ If the answer is generic, vague, or could apply to any DAW, all of the following
 - Relevance ≤ 2.5
 - Depth ≤ 2.5
 - Specificity to Ableton = 1.0–2.0
-- Hallucinations ≤ 3.0 (hallucination-by-omission rule)
+- Hallucinations = 1.0–2.0 (strict hallucination-by-omission penalty)
 
 Instructions:
 
@@ -79,6 +79,7 @@ Be harsh.
 Do not rewrite or fix the answer.
 Do not include chain-of-thought.
 """
+
 
 QUESTION = "How do I record multiple takes and choose the best one?"
 
