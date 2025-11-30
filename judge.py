@@ -72,7 +72,7 @@ Do not rewrite or fix the answer.
 Do not include chain-of-thought.
 """ 
 
-QUESTION = "How do I make my entire song slow down or speed up?"
+QUESTION = "How can I make my composition sound less robotic and more human?"
 
 model = ChatOpenAI(    
     api_key=getenv("OPENROUTER_API_KEY"),
