@@ -39,6 +39,8 @@ Depth — Must show real reasoning or alternative approaches.
 Specificity to Ableton — Must include actual Ableton terminology, menus, devices, actions, shortcuts, or paths.
 Clarity — Must be structured, readable, and instructional.
 Hallucinations — Check for any incorrect Ableton claims. If unsure, lower the score.
+    - If the question requires Ableton-specific details and the answer avoids them (generic DAW advice, vague descriptions, or missing key Ableton facts), treat this as a hallucination-by-omission. Hallucination score must be ≤ 3.0.
+    - Missing essential Ableton information is penalized the same as providing incorrect information.
 
 REQUIRED OUTPUT
 
@@ -60,6 +62,12 @@ If an answer includes software NOT requested → subtract at least 1–2 points 
 
 If an answer describes generic audio concepts without Ableton context → Depth ≤ 2.5
 
+If the answer is generic, vague, or could apply to any DAW, all of the following must apply:
+- Relevance ≤ 2.5
+- Depth ≤ 2.5
+- Specificity to Ableton = 1.0–2.0
+- Hallucinations ≤ 3.0 (hallucination-by-omission rule)
+
 Instructions:
 
 You will be given:
@@ -70,9 +78,9 @@ Evaluate the answer strictly according to the rules above.
 Be harsh.
 Do not rewrite or fix the answer.
 Do not include chain-of-thought.
-""" 
+"""
 
-QUESTION = "How can I make my composition sound less robotic and more human?"
+QUESTION = "How do I record multiple takes and choose the best one?"
 
 model = ChatOpenAI(    
     api_key=getenv("OPENROUTER_API_KEY"),
