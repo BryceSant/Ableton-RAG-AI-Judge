@@ -112,7 +112,8 @@ while True:
 
         print("Judge's verdict: \n")
 
-        print(response.content)
+        for chunk in response:
+            print(chunk.content, end="", flush=True)
 
 
 
