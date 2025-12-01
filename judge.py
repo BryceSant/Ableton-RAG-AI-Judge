@@ -80,8 +80,10 @@ Do not rewrite or fix the answer.
 Do not include chain-of-thought.
 """
 
-
-QUESTION = "How do I record multiple takes and choose the best one?"
+QUESTION = "How do I organize my tracks better?"
+#QUESTION = "How do I create and save my own instrument chains?"
+#QUESTION = "How can I reduce CPU usage and optimize my computer's performance in large projects?"
+#QUESTION = "How can I fix my no audio output issue when my interface and speakers are connected but my track isn’t playing any sound?"
 
 model = ChatOpenAI(    
     api_key=getenv("OPENROUTER_API_KEY"),
