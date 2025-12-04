@@ -79,7 +79,7 @@ Be harsh.
 Do not rewrite or fix the answer.
 Do not include chain-of-thought.
 """
-QUESTION = "How do I create more depth to a pad I just made?"
+QUESTION = "What’s the difference between Session View and Arrangement View and why should I use each over the other?"
 
 model = ChatOpenAI(    
     api_key=getenv("OPENROUTER_API_KEY"),
